@@ -1,6 +1,6 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'curb'
+gem 'curb', '0.8.8'
 gem 'crack'
 gem 'tzinfo'
 gem 'rake'

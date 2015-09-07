@@ -18,6 +18,7 @@ module Xignite
 
       def get(options={})
         options = options.merge('Header_Username' => Xignite.configuration.username) if Xignite.configuration.username
+        options=options.merge('@xmlns' => "http://www.xignite.com/services/")
         querystring = options.map do |key, value|
           "#{CGI.escape(key.to_s).gsub(/%(5B|5D)/n) { [$1].pack('H*') }}=#{CGI.escape(value)}"
         end.sort * '&'
@@ -28,7 +29,7 @@ module Xignite
       end
 
       private
-      
+
       def endpoint
         names = name.split('::')
         "#{protocol}://#{Xignite.configuration.endpoint}/x#{names[1]}.xml/#{names[2]}"  # use xml instead of asmx
